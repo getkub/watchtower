@@ -8,11 +8,11 @@ sequenceDiagram
     participant T as Tines/n8n + AI
     participant D as Ticketing (Jira/SNOW)
 
-    E->>A: 1. Generate Detection Alert
+    E->>A: 1. Generate Detection Alert (tag: wt:new)
     loop Every polling interval
         T->>A: 2. Poll new alerts via REST API
         A-->>T: Returns alert data
-        T->>C: 3. Create/Update Case (status=in-progress)
+        T->>C: 3. Create/Update Case (tag: wt:progress)
         
         Note over A,T: AI Auto-Triage Phase
         T->>T: 4. AI evaluates, groups, and merges alerts
@@ -22,6 +22,6 @@ sequenceDiagram
         
         T->>D: 7. Create Enriched Incident Ticket
         D-->>T: Returns Ticket ID
-        T->>C: 8. Update Case (status=closed, ticket_id)
+        T->>C: 8. Update Case (tag: wt:closed, ticket_id)
     end
 ```

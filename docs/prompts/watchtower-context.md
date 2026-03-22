@@ -18,7 +18,7 @@ Watchtower is a lightweight alert storage system designed as a bridge between SI
 
 1. **Splunk Integration (`TA_watchtower`)**
    - **Alert Generation**: Saved searches write detection events into the `wt_alerts` index.
-   - **State Tracking**: A KVStore collection `wt_alerts_reference` maintains the alert lifecycle status (`new`, `processing`, `resolved`), and holds automation metadata (e.g., `sent_to_soar`).
+   - **State Tracking**: A KVStore collection `wt_alerts_reference` maintains the alert lifecycle (`alert_status` (unknown/new/progress/pending/resolved/closed)), and holds automation metadata (e.g., `sent_to_soar`).
    - **Polling**: Tines/n8n polls `/services/search/jobs` for new alerts and updates the KVStore via REST.
 
 2. **ElasticSearch Integration**

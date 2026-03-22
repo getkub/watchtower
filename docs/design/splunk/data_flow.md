@@ -11,7 +11,7 @@ sequenceDiagram
     loop Every polling interval
         T->>W: 2. Poll new alerts via REST API
         W-->>T: Returns alert data
-        T->>W: 3. Update KVReference (status=processing)
+        T->>W: 3. Update KVReference (status=progress)
         
         Note over W,T: AI Auto-Triage Phase
         T->>T: 4. AI evaluates, groups, and merges alerts
@@ -21,6 +21,6 @@ sequenceDiagram
         
         T->>D: 7. Create Enriched Incident Ticket
         D-->>T: Returns Ticket ID
-        T->>W: 8. Update KVReference (status=resolved, ticket_id)
+        T->>W: 8. Update KVReference (status=closed, ticket_id)
     end
 ```

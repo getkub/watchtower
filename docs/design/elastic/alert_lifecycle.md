@@ -2,11 +2,11 @@
 
 ```mermaid
 stateDiagram-v2
-    [*] --> AlertGenerated: Elastic Rule Matches
+    [*] --> New: Elastic Rule Matches (tag: wt:new)
     
-    AlertGenerated --> CaseOpened: Tines polls & creates Case
+    New --> Progress: Workflow Tool creates Case (tag: wt:progress)
     
-    state CaseOpened {
+    state Progress {
         [*] --> AITriage
         AITriage --> DrillDownSearch
         DrillDownSearch --> AppendCaseNotes
@@ -14,10 +14,13 @@ stateDiagram-v2
         Routing --> Ticketing
     }
     
-    CaseOpened --> CaseClosed: Ticket Created
-    CaseOpened --> CaseFailed: Automation Error
+    Progress --> Pending: Awaiting External Input (tag: wt:pending)
+    Progress --> Resolved: Issue Addressed (tag: wt:resolved)
+    Pending --> Progress: Input Received
+    Resolved --> Closed: Case Closed/Archived (tag: wt:closed)
     
-    CaseFailed --> CaseOpened: Retry
+    Progress --> Unknown: Automation Error (tag: wt:unknown)
+    Unknown --> Progress: Retry Mechanism
     
-    CaseClosed --> [*]
+    Closed --> [*]
 ```
