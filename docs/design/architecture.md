@@ -5,6 +5,7 @@ flowchart LR
     subgraph Splunk
         SplunkRules[Saved Searches] -->|collect| SplunkIndex[(wt_alerts Index)]
         SplunkIndex -.-> KV[(KVStore:<br>wt_alerts_reference)]
+        KV -.-> KVTriage[(KVStore:<br>wt_alerts_triage)]
     end
     
     subgraph ElasticSearch
@@ -14,6 +15,8 @@ flowchart LR
     
     subgraph Workflow Automation
         Tines[Tines / n8n]
+        AI[AI Triage Module]
+        Tines <-->|Intelligent Sorting & Merging| AI
     end
     
     subgraph Destinations
@@ -23,11 +26,14 @@ flowchart LR
 
     %% Splunk Interactions
     Tines -->|REST API POLL| SplunkIndex
-    Tines -->|Update Status| KV
+    Tines -->|1. Drill-down Searches| SplunkIndex
+    Tines -->|2. Update Status| KV
+    Tines -->|3. Save Triage Context| KVTriage
     
     %% Elastic Interactions
     Tines -->|REST API POLL| ElasticAlerts
-    Tines -->|Update Case| ElasticCases
+    Tines -->|1. Drill-down Searches| ElasticAlerts
+    Tines -->|2. Update Case & Triage Notes| ElasticCases
     
     %% Alert Destinations
     Tines -->|Create Ticket| Jira

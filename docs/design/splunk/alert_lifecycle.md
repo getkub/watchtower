@@ -1,4 +1,4 @@
-# Alert Lifecycle
+# Splunk Alert Lifecycle
 
 ```mermaid
 stateDiagram-v2
@@ -7,12 +7,14 @@ stateDiagram-v2
     New --> Processing: Workflow Tool polls & picks up
     
     state Processing {
-        [*] --> Enriching
-        Enriching --> Routing
+        [*] --> AITriage
+        AITriage --> DrillDownSearch
+        DrillDownSearch --> ContextSaved(KVTriage)
+        ContextSaved(KVTriage) --> Routing
         Routing --> Ticketing
     }
     
-    Processing --> Resolved: Ticket Created / Action Taken
+    Processing --> Resolved: Ticket Created / Context Complete
     Processing --> Failed: Error in Automation
     
     Failed --> Processing: Retry mechanism

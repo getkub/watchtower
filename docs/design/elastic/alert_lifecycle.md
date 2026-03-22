@@ -7,8 +7,10 @@ stateDiagram-v2
     AlertGenerated --> CaseOpened: Tines polls & creates Case
     
     state CaseOpened {
-        [*] --> Enriching
-        Enriching --> Routing
+        [*] --> AITriage
+        AITriage --> DrillDownSearch
+        DrillDownSearch --> AppendCaseNotes
+        AppendCaseNotes --> Routing
         Routing --> Ticketing
     }
     
