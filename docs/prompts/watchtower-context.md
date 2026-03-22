@@ -11,6 +11,7 @@ Watchtower is a lightweight alert storage system designed as a bridge between SI
 **Core Design Principles:**
 - **Zero Push / No Webhooks**: Watchtower never pushes data out. 
 - **Pull-Based Integration**: External tools (Tines/n8n) poll the SIEM via its native REST API.
+- **AI-Driven Auto-Triage**: Orchestrators use AI specifically to dynamically run drill-down searches across the SIEM, intelligently sort/merge alerts, and write 1st-level triage context *back* into the SIEM natively (via KVStore `wt_alerts_triage` in Splunk or Case updates in Elastic).
 - **Minimal Logic**: Watchtower provides only the storage layer (index, KVStore, case management) and relies on external orchestrators to execute all routing, enrichment, and ticketing (e.g., Jira, ServiceNow).
 
 ## Architecture

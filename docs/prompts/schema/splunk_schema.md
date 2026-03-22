@@ -22,3 +22,10 @@
 - `retry_count` (Number)
 - `last_updated` (Number)
 - `error_message` (String)
+
+**AI Triage Context (KVStore `wt_alerts_triage`):**
+Because AI (e.g., via Tines) performs 1st level triage and executes drill-down searches, this secondary KVStore collection tracks the results:
+- `wt_alert_id` (UUID - Links back to the core alert)
+- `triage_summary` (String/Markdown of the AI analysis)
+- `merged_alert_ids` (Array of identically grouped alert IDs)
+- `drilldown_results` (JSON of the contextual queries)
