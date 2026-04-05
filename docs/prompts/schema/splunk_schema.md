@@ -14,7 +14,7 @@
 - `raw_event`: The raw, original log string (if applicable).
 
 **State Tracking (KVStore `wt_alerts_reference` Specific):**
-- `alert_status` (new/processing/resolved)
+- `alert_status` (unknown/new/progress/pending/resolved/closed)
 - `sent_to_soar` (Boolean)
 - `soar_incident_id` (String ID mapped from Jira/ServiceNow)
 - `soar_story_name` (String)

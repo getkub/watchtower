@@ -13,7 +13,13 @@ Unlike Splunk's explicit index + KVStore design, Elastic pairs native Alerts Man
 **Alert Payload (Flexible):**
 - `payload` / `alert_data`: The rich ECS-formatted document array/object containing all dynamic event details.
 
-**State Tracking (via Elastic Case Management):**
-- `case.status` (open / in-progress / closed)
-- `case.id`
-- Custom Case tags linking back to Jira/ServiceNow incident IDs.
+**State Tracking (via Elastic Case Management Tags):**
+Because native case statuses may vary, Watchtower systematically syncs states across all tools using specific `wt:<status>` tags on cases:
+- `wt:unknown`
+- `wt:new`
+- `wt:progress`
+- `wt:pending`
+- `wt:resolved`
+- `wt:closed`
+- `case.id` (Native case reference)
+- Additional tags linking back to Jira/ServiceNow incident IDs.
