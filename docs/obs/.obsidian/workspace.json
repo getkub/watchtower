@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Welcome.md",
+                "file": "Watchtower Context.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Welcome"
+              "title": "Watchtower Context"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Welcome.md",
+                "file": "Watchtower Context.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Welcome"
+              "title": "Backlinks for Watchtower Context"
             }
           },
           {
@@ -184,15 +184,30 @@
   },
   "active": "3cc15ca095bddaf8",
   "lastOpenFiles": [
-    "Welcome.md",
-    "Elastic Alert Lifecycle.md",
-    "Watchtower Knowledge Tree.md",
-    "Watchtower Context.md",
     "System Architecture.md",
     "Splunk Schema.md",
     "Splunk Data Flow.md",
     "Splunk Alert Lifecycle.md",
+    "Elastic Schema.md",
     "Elastic Data Flow.md",
-    "Elastic Schema.md"
+    "Elastic Alert Lifecycle.md",
+    "index.md",
+    "Watchtower Context.md",
+    "prompts/watchtower-context.md",
+    "prompts/schema/splunk_schema.md",
+    "prompts/schema/elastic_schema.md",
+    "Welcome.md",
+    "llm.md",
+    "prompts/schema",
+    "prompts",
+    "design/elastic/data_flow.md",
+    "design/elastic/alert_lifecycle.md",
+    "design/splunk/data_flow.md",
+    "design/splunk/alert_lifecycle.md",
+    "design/splunk",
+    "design/elastic",
+    "design/architecture.md",
+    "design",
+    "Watchtower Knowledge Tree.md"
   ]
 }
